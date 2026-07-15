@@ -1,0 +1,24 @@
+# datasets/weights - too large 
+datasets/*/train/images/
+datasets/*/valid/images/
+datasets/*/test/images/
+models/*/weights/*.pt
+
+# keep labels + yaml (small, useful for reproducibility) but exclude images
+!datasets/*/train/labels/
+!datasets/*/valid/labels/
+!datasets/*/test/labels/
+
+# python
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+
+models/*/weights/last.pt
+models/*/weights/epoch*.pt
+
+# logs
+*.log
+runs/

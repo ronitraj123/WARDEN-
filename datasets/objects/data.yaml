@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 5
+names: ['car', 'cycle', 'person', 'rickshaw', 'two wheeler']
+
+roboflow:
+  workspace: ronit-raj-qvmcj
+  project: warden-sr9rk
+  version: dataset
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/ronit-raj-qvmcj/warden-sr9rk/dataset/dataset

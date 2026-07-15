@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['boom barrier']
+
+roboflow:
+  workspace: ronit-raj-qvmcj
+  project: warden-barrier
+  version: dataset
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/ronit-raj-qvmcj/warden-barrier/dataset/dataset

@@ -3,6 +3,7 @@ datasets/*/train/images/
 datasets/*/valid/images/
 datasets/*/test/images/
 models/*/weights/*.pt
+yolov8n.pt
 
 # keep labels + yaml (small, useful for reproducibility) but exclude images
 !datasets/*/train/labels/

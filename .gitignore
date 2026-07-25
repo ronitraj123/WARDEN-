@@ -1,14 +1,24 @@
 # datasets/weights - too large 
-datasets/*/train/images/
-datasets/*/valid/images/
-datasets/*/test/images/
+datasets/barrier/*/images/
+datasets/objects/*/train/images/
+datasets/objects/*/valid/images/
+datasets/objects/*/test/images/
+datasets/new_unlabeled/
+datasets/un_data.MOV
 models/*/weights/*.pt
 yolov8n.pt
 
-# keep labels + yaml (small, useful for reproducibility) but exclude images
-!datasets/*/train/labels/
-!datasets/*/valid/labels/
-!datasets/*/test/labels/
+
+
+*.mov
+*.MOV
+*.mp4
+raw_footage/
+
+# debug/scratch outputs - not deliverables
+roi_check_*.jpg
+debug_output.jpg
+stock_check_*.jpg
 
 # python
 venv/

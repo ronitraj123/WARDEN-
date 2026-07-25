@@ -5,10 +5,10 @@ datasets/objects/*/valid/images/
 datasets/objects/*/test/images/
 datasets/new_unlabeled/
 datasets/un_data.MOV
-models/*/weights/*.pt
 yolov8n.pt
 
-
+models/*/weights/*.pt
+!models/*/weights/best.pt
 
 *.mov
 *.MOV

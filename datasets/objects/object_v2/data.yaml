@@ -1,0 +1,10 @@
+train: train/images
+val: valid/images
+test: test/images
+
+names: 
+  0: car
+  1: cycle
+  2: person
+  3: rickshaw
+  4: two wheeler

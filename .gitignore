@@ -1,5 +1,6 @@
 # datasets/weights - too large 
 datasets/barrier/*/images/
+datasets/barrier_calibration/
 datasets/objects/*/train/images/
 datasets/objects/*/valid/images/
 datasets/objects/*/test/images/

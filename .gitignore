@@ -6,6 +6,7 @@ datasets/objects/*/valid/images/
 datasets/objects/*/test/images/
 datasets/new_unlabeled/
 datasets/un_data.MOV
+violation_snapshots
 yolov8n.pt
 
 models/*/weights/*.pt

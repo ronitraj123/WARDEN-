@@ -8,6 +8,8 @@ datasets/new_unlabeled/
 datasets/un_data.MOV
 violation_snapshots
 yolov8n.pt
+*.jpg
+*.json
 
 models/*/weights/*.pt
 !models/*/weights/best.pt

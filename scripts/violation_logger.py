@@ -65,16 +65,37 @@ class ViolationEventLogger:
                     self._finalize_event(event)
                     del self.active_events[track_id]
 
-    def _save_snapshot(self, event, frame, box):
+    def _save_snapshot(self, event, frame, box, padding_ratio=0.25, min_size=200):
         track_id = event['track_id']
-        path = os.path.join(self.snapshot_dir, f"track_{track_id}.jpg")
-        x1, y1, x2, y2 = map(int, box)
+        unique_key = f"{track_id}_{event['entry_frame']}"
+        path = os.path.join(self.snapshot_dir, f"track_{unique_key}.jpg")
+
+        x1, y1, x2, y2 = box
         h, w = frame.shape[:2]
-        x1, y1 = max(0, x1), max(0, y1)
-        x2, y2 = min(w, x2), min(h, y2)
+        box_w, box_h = x2 - x1, y2 - y1
+
+    # add proportional padding around the detected box
+        pad_x = box_w * padding_ratio
+        pad_y = box_h * padding_ratio
+        x1, y1 = x1 - pad_x, y1 - pad_y
+        x2, y2 = x2 + pad_x, y2 + pad_y
+
+    # enforce a minimum crop size so very small/tight boxes don't produce
+    # a tiny, unusably small evidence image (widen symmetrically around center)
+        cx, cy = (x1 + x2) / 2, (y1 + y2) / 2
+        cur_w, cur_h = x2 - x1, y2 - y1
+        if cur_w < min_size:
+            x1, x2 = cx - min_size / 2, cx + min_size / 2
+        if cur_h < min_size:
+            y1, y2 = cy - min_size / 2, cy + min_size / 2
+
+    # clamp to frame bounds
+        x1, y1 = max(0, int(x1)), max(0, int(y1))
+        x2, y2 = min(w, int(x2)), min(h, int(y2))
+
         crop = frame[y1:y2, x1:x2]
         if crop.size > 0:
-            cv2.imwrite(path, crop)
+            cv2.imwrite(path, crop, [cv2.IMWRITE_JPEG_QUALITY, 95])
             event['snapshot_path'] = path
 
     def _finalize_event(self, event):
